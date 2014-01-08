@@ -1,0 +1,5 @@
+require "sluggi/version"
+require "sluggi/slug"
+require "sluggi/history"
+require "sluggi/slugged"
+require "sluggi/generators/sluggi_generator"
