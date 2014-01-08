@@ -46,6 +46,8 @@ Sluggi is Magic Free(tm). Each slugged model must:
 
 ### Simple Slugged Model
 
+Specify the slug value by defining `#slug_value` and `#slug_value_changed?`.
+
 ```ruby
 class Cat < ActiveRecord::Base
   include Sluggi::Slugged
@@ -76,6 +78,9 @@ Cat.find_by_slug('tuxedo-stan')
 ```
 
 ### Model with Slugged History
+
+To save slug history, include `Sluggi::History`. You get a `slugs` association. You can search for any
+slug in the history using `.find_slug!`.
 
 ```ruby
 class Cat < ActiveRecord::Base
@@ -121,6 +126,9 @@ Cat.find_by_slug('tuxedo-stan')
 
 ### Model with Slug Candidates
 
+Override `#slug_candidates` to define cascading candidate values for slugs. This is useful to avoid
+uniqueness conflicts.
+
 ```ruby
 class Cat < ActiveRecord::Base
   include Sluggi::Slugged
@@ -155,9 +163,9 @@ cat_2.id
 
 ## Alternatives
 
-[override ActiveRecord#to_param](http://guides.rubyonrails.org/active_support_core_extensions.html#to-param)
-[use ActiveRecord.to_param](https://github.com/rails/rails/pull/12891)
-[friendly_id](https://github.com/norman/friendly_id)
-[slug](https://github.com/bkoski/slug)
-[slugged](https://github.com/Sutto/slugged)
-[others](https://rubygems.org/search?utf8=%E2%9C%93&query=slug)
+* [override ActiveRecord#to_param](http://guides.rubyonrails.org/active_support_core_extensions.html#to-param)
+* [use ActiveRecord.to_param](https://github.com/rails/rails/pull/12891)
+* [friendly_id](https://github.com/norman/friendly_id)
+* [slug](https://github.com/bkoski/slug)
+* [slugged](https://github.com/Sutto/slugged)
+* [others](https://rubygems.org/search?utf8=%E2%9C%93&query=slug)
