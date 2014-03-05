@@ -1,7 +1,7 @@
 # Sluggi
 
-[![Gem Version](https://badge.fury.io/rb/sluggi.png)](http://badge.fury.io/rb/sluggi)
-[![Build Status](https://travis-ci.org/neighborland/sluggi.png?branch=master)](https://travis-ci.org/neighborland/sluggi)
+[![Gem Version](http://img.shields.io/gem/v/sluggi.svg)](http://rubygems.org/gems/sluggi)
+[![Build Status](http://img.shields.io/travis/neighborland/sluggi.svg)](https://travis-ci.org/neighborland/sluggi)
 
 Sluggi is a simple [friendly_id](https://github.com/norman/friendly_id)-inspired slugging library for ActiveRecord models.
 
