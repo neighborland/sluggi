@@ -8,7 +8,7 @@ module Sluggi
 
     class << self
       def find_type(slug, sluggable_type)
-        where(slug: slug).where(sluggable_type: sluggable_type).order(id: :desc)
+        where(slug: slug, sluggable_type: sluggable_type).order(id: :desc)
       end
     end
 
