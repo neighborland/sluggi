@@ -9,9 +9,11 @@ module Sluggi
 
     module ClassMethods
       def find_slug!(slug)
-        where(slug: slug).first ||
-          find_slugs(slug).first.try(:sluggable) ||
-          raise(ActiveRecord::RecordNotFound)
+        object = where(slug: slug).first || find_slugs(slug).first.try(:sluggable)
+        unless object.is_a?(self)
+          raise(ActiveRecord::RecordNotFound.new("Couldn't find #{self.name} with 'slug'='#{slug}'"))
+        end
+        object
       end
 
       def slug_exists?(slug)

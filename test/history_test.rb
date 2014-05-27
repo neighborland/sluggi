@@ -14,6 +14,25 @@ class HistoryTest < MiniTest::Spec
     end
   end
 
+  class ::Dog < ActiveRecord::Base
+    include Sluggi::Slugged
+    include Sluggi::History
+
+    def slug_value
+      name
+    end
+
+    def slug_value_changed?
+      name_changed?
+    end
+  end
+
+  class ::BigDog < ::Dog
+  end
+
+  class ::LittleDog < ::Dog
+  end
+
   before do
     Cat.delete_all
     Sluggi::Slug.delete_all
@@ -37,6 +56,16 @@ class HistoryTest < MiniTest::Spec
       assert_raises(ActiveRecord::RecordNotFound) do
         Cat.find_slug! 'garfield'
       end
+    end
+
+    it "finds STI classes" do
+      big_dog = BigDog.create(name: 'Snoop')
+      assert_equal big_dog, Dog.find_slug!('snoop')
+      assert_equal big_dog, BigDog.find_slug!('snoop')
+      error = assert_raises(ActiveRecord::RecordNotFound) do
+        LittleDog.find_slug!('snoop')
+      end
+      assert_equal "Couldn't find LittleDog with 'slug'='snoop'", error.message
     end
   end
 

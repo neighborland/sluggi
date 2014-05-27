@@ -29,6 +29,13 @@ unless ActiveRecord::Base.connection.tables.include?('cats')
       t.string   :sluggable_type
       t.datetime :created_at
     end
+
+    create_table :dogs do |t|
+      t.datetime :created_at
+      t.string :type
+      t.string :name
+      t.string :slug
+    end
   end
 end
 
