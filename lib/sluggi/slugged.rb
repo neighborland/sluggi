@@ -19,7 +19,7 @@ module Sluggi
       users
     )
 
-    NOT_IMPLEMENTED_MESSAGE = 'You must implement #slug_value_changed? and either #slug_value or #slug_candidates'
+    NOT_IMPLEMENTED_MESSAGE = 'You must implement #slug_value_changed? and either #slug_value or #slug_candidates'.freeze
 
     included do
       before_validation :set_slug
