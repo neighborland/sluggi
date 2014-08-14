@@ -3,19 +3,19 @@ module Sluggi
     extend ActiveSupport::Concern
 
     RESERVED_SLUGS = %w(
-      create
-      edit
-      index
-      new
-      update
       admin
       assets
+      create
+      edit
       images
+      index
       javascripts
       login
       logout
-      stylesheets
+      new
       session
+      stylesheets
+      update
       users
     )
 
