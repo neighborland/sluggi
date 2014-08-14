@@ -20,13 +20,7 @@ gem 'sluggi'
 Add a string column named `slug` to any models you want to slug. You can generate a migration like so:
 
 ```sh
-rails generate migration AddSlugToCats slug:string
-```
-```ruby
-# edit the migration to add a unique index:
-add_index :cats, :slug, unique: true
-```
-```sh
+rails generate migration AddSlugToCats slug:string:uniq:index
 rake db:migrate
 ```
 
