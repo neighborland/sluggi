@@ -9,7 +9,7 @@ module Sluggi
         as: :sluggable,
         dependent: :destroy
 
-      after_save :create_slug
+      after_save :create_slug, if: :slug_value_changed?
     end
 
     module ClassMethods
