@@ -41,4 +41,7 @@ end
 
 I18n.enforce_available_locales = true
 
+# suppress deprecation warning
+ActiveSupport.test_order = :random
+
 # Thanks to this List of Cats: http://en.wikipedia.org/wiki/List_of_cats
