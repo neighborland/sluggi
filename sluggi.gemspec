@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.1"
   spec.add_development_dependency "sqlite3", "~> 1.3"
   spec.add_development_dependency "rails", "~> 4.0"
+  spec.add_development_dependency "mocha", "~> 1.0"
 end

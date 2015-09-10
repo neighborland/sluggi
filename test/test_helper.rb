@@ -6,16 +6,17 @@ require 'active_support'
 require 'active_record'
 require 'sqlite3'
 require 'sluggi'
+require 'mocha/setup'
 
 ActiveRecord::Base.logger = Logger.new(STDERR) if ENV["VERBOSE"]
- 
+
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",
   database: ":memory:"
 )
 
 unless ActiveRecord::Base.connection.tables.include?('cats')
-  ActiveRecord::Schema.define do  
+  ActiveRecord::Schema.define do
     create_table :cats do |t|
       t.datetime :created_at
       t.string :factoid

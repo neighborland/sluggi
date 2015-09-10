@@ -3,7 +3,7 @@ module Sluggi
     extend ActiveSupport::Concern
 
     included do
-      validates :slug, uniqueness: true
+      validates :slug, uniqueness: true, if: :slug_value_changed?
     end
   end
 end
