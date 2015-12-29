@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/neighborland/sluggi"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
-  spec.test_files    = spec.files.grep(%r{^(test)/})
+  spec.files         = Dir["lib/**/*.rb", "README.md", "LICENSE.txt"]
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 1.9.3"
