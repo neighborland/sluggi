@@ -11,12 +11,6 @@
 Metrics/LineLength:
   Max: 96
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles.
-Style/AccessModifierIndentation:
-  EnforcedStyle: outdent
-
 # Offense count: 4
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/ClassAndModuleChildren:
@@ -39,28 +33,6 @@ Style/Documentation:
     - 'lib/sluggi/validate_uniqueness.rb'
     - 'lib/sluggi/version.rb'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'lib/sluggi/generators/sluggi_generator.rb'
-    - 'test/history_test.rb'
-    - 'test/slug_test.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundModuleBody:
-  Exclude:
-    - 'lib/sluggi/history.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/LeadingCommentSpace:
-  Exclude:
-    - 'test/test_helper.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
@@ -75,13 +47,6 @@ Style/RedundantSelf:
     - 'lib/sluggi/history.rb'
     - 'test/generator_test.rb'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-Style/SingleSpaceBeforeFirstArg:
-  Exclude:
-    - 'lib/sluggi/migrations/create_slugs.rb'
-    - 'test/test_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpecialGlobalVars:
@@ -93,19 +58,6 @@ Style/SpecialGlobalVars:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/TrailingBlankLines:
-  Exclude:
-    - 'Rakefile'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/TrailingWhitespace:
-  Exclude:
-    - 'lib/sluggi/migrations/create_slugs.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.

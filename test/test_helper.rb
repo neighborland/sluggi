@@ -1,5 +1,5 @@
-#require 'coveralls'
-#Coveralls.wear!
+# require 'coveralls'
+# Coveralls.wear!
 
 require 'minitest/autorun'
 require 'active_support'
@@ -25,9 +25,9 @@ unless ActiveRecord::Base.connection.tables.include?('cats')
     end
 
     create_table :slugs do |t|
-      t.string   :slug,         null: false
-      t.integer  :sluggable_id, null: false
-      t.string   :sluggable_type
+      t.string :slug, null: false
+      t.integer :sluggable_id, null: false
+      t.string :sluggable_type
       t.datetime :created_at
     end
 

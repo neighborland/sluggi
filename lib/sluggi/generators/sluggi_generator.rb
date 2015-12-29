@@ -10,5 +10,4 @@ class SluggiGenerator < ActiveRecord::Generators::Base
   def copy_files
     migration_template 'create_slugs.rb', 'db/migrate/create_slugs.rb'
   end
-
 end

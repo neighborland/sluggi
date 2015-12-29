@@ -119,5 +119,4 @@ class HistoryTest < MiniTest::Spec
       assert_equal 'tsim-tung-brother-cream', cat.slugs.first.slug
     end
   end
-
 end

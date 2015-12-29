@@ -13,7 +13,7 @@ module Sluggi
       slug_was
     end
 
-  private
+    private
 
     def clean_slug(value)
       value.try :parameterize

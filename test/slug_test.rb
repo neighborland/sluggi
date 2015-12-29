@@ -30,6 +30,5 @@ module Sluggi
         assert_equal 'meow', Slug.new(slug: 'meow').to_param
       end
     end
-
   end
 end

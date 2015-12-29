@@ -30,7 +30,7 @@ module Sluggi
       end
     end
 
-  private
+    private
 
     def create_slug
       value = clean_slug(slug_value)
@@ -39,6 +39,5 @@ module Sluggi
       self.class.find_slugs(value).delete_all # revert to previous slug & put first
       slugs.create(slug: value)
     end
-
   end
 end
