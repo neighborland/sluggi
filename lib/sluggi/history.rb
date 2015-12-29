@@ -4,8 +4,8 @@ module Sluggi
 
     included do
       has_many :slugs,
-        -> { order('slugs.id DESC') },
-        class_name: 'Sluggi::Slug',
+        -> { order("slugs.id DESC") },
+        class_name: "Sluggi::Slug",
         as: :sluggable,
         dependent: :destroy
 
@@ -16,7 +16,7 @@ module Sluggi
       def find_slug!(slug)
         object = where(slug: slug).first || find_slugs(slug).first.try(:sluggable)
         unless object.is_a?(self)
-          raise ActiveRecord::RecordNotFound, "Couldn't find #{self.name} with 'slug'='#{slug}'"
+          raise ActiveRecord::RecordNotFound, "Couldn't find #{name} with 'slug'='#{slug}'"
         end
         object
       end
@@ -30,7 +30,7 @@ module Sluggi
       end
     end
 
-  private
+    private
 
     def create_slug
       value = clean_slug(slug_value)
@@ -39,6 +39,5 @@ module Sluggi
       self.class.find_slugs(value).delete_all # revert to previous slug & put first
       slugs.create(slug: value)
     end
-
   end
 end

@@ -6,7 +6,7 @@ class ValidatePresenceTest < MiniTest::Spec
   end
 
   it "validates presence of slug" do
-    refute Cat.new(slug: '').valid?
-    assert Cat.new(slug: 'foo').valid?
+    refute Cat.new(slug: "").valid?
+    assert Cat.new(slug: "foo").valid?
   end
 end

@@ -1,12 +1,12 @@
-#require 'coveralls'
-#Coveralls.wear!
+# require 'coveralls'
+# Coveralls.wear!
 
-require 'minitest/autorun'
-require 'active_support'
-require 'active_record'
-require 'sqlite3'
-require 'sluggi'
-require 'mocha/setup'
+require "minitest/autorun"
+require "active_support"
+require "active_record"
+require "sqlite3"
+require "sluggi"
+require "mocha/setup"
 
 ActiveRecord::Base.logger = Logger.new(STDERR) if ENV["VERBOSE"]
 
@@ -15,7 +15,7 @@ ActiveRecord::Base.establish_connection(
   database: ":memory:"
 )
 
-unless ActiveRecord::Base.connection.tables.include?('cats')
+unless ActiveRecord::Base.connection.tables.include?("cats")
   ActiveRecord::Schema.define do
     create_table :cats do |t|
       t.datetime :created_at
@@ -25,9 +25,9 @@ unless ActiveRecord::Base.connection.tables.include?('cats')
     end
 
     create_table :slugs do |t|
-      t.string   :slug,         null: false
-      t.integer  :sluggable_id, null: false
-      t.string   :sluggable_type
+      t.string :slug, null: false
+      t.integer :sluggable_id, null: false
+      t.string :sluggable_type
       t.datetime :created_at
     end
 

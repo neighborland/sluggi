@@ -13,13 +13,13 @@ class ValidatesExclusionOfTest < MiniTest::Spec
     end
 
     it "does not include valid slug" do
-      refute_includes Cat.reserved_slugs, 'something'
+      refute_includes Cat.reserved_slugs, "something"
     end
   end
 
   describe "validation" do
     it "ensures slug is not a reserved word" do
-      refute Cat.new(slug: 'edit').valid?
+      refute Cat.new(slug: "edit").valid?
     end
   end
 end

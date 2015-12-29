@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'rails/generators/test_case'
+require "test_helper"
+require "rails/generators/test_case"
 
 class GeneratorTest < Rails::Generators::TestCase
   tests ::SluggiGenerator
@@ -11,7 +11,7 @@ class GeneratorTest < Rails::Generators::TestCase
       run_generator
       assert_migration "db/migrate/create_slugs"
     ensure
-      FileUtils.rm_rf self.destination_root
+      FileUtils.rm_rf destination_root
     end
   end
 end
