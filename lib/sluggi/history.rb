@@ -16,7 +16,7 @@ module Sluggi
       def find_slug!(slug)
         object = where(slug: slug).first || find_slugs(slug).first.try(:sluggable)
         unless object.is_a?(self)
-          raise ActiveRecord::RecordNotFound, "Couldn't find #{self.name} with 'slug'='#{slug}'"
+          raise ActiveRecord::RecordNotFound, "Couldn't find #{name} with 'slug'='#{slug}'"
         end
         object
       end

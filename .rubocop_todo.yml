@@ -33,13 +33,6 @@ Style/Documentation:
     - 'lib/sluggi/validate_uniqueness.rb'
     - 'lib/sluggi/version.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/RedundantSelf:
-  Exclude:
-    - 'lib/sluggi/history.rb'
-    - 'test/generator_test.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpecialGlobalVars:

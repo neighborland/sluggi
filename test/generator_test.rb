@@ -11,7 +11,7 @@ class GeneratorTest < Rails::Generators::TestCase
       run_generator
       assert_migration "db/migrate/create_slugs"
     ensure
-      FileUtils.rm_rf self.destination_root
+      FileUtils.rm_rf destination_root
     end
   end
 end
