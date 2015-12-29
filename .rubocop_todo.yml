@@ -46,8 +46,3 @@ Style/SpecialGlobalVars:
   Exclude:
     - 'sluggi.gemspec'
 
-# Offense count: 73
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/StringLiterals:
-  Enabled: false

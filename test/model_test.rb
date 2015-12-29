@@ -2,7 +2,7 @@ require "test_helper"
 
 class ModelTest < MiniTest::Spec
   class IncompleteCat < ActiveRecord::Base
-    self.table_name = 'cats'
+    self.table_name = "cats"
     include Sluggi::Model
   end
 
@@ -19,7 +19,7 @@ class ModelTest < MiniTest::Spec
   end
 
   class CandidateCat < ActiveRecord::Base
-    self.table_name = 'cats'
+    self.table_name = "cats"
     include Sluggi::Model
 
     def slug_candidates
@@ -40,7 +40,7 @@ class ModelTest < MiniTest::Spec
   describe "#to_param" do
     before do
       Cat.delete_all
-      @cat = Cat.new(name: 'Tuxedo Stan')
+      @cat = Cat.new(name: "Tuxedo Stan")
     end
 
     it "is nil when new" do
@@ -49,25 +49,25 @@ class ModelTest < MiniTest::Spec
 
     it "is the slug when persisted" do
       @cat.save!
-      assert_equal 'tuxedo-stan', @cat.to_param
+      assert_equal "tuxedo-stan", @cat.to_param
     end
 
     it "is the old slug when changed but not saved" do
       @cat.save!
-      @cat.slug = 'ketzel'
-      assert_equal 'tuxedo-stan', @cat.to_param
+      @cat.slug = "ketzel"
+      assert_equal "tuxedo-stan", @cat.to_param
     end
   end
 
   it "sets slug from candidates on validation" do
-    cat = CandidateCat.new(name: 'Smokey')
+    cat = CandidateCat.new(name: "Smokey")
     assert cat.valid?
-    assert_equal 'smokey', cat.slug
+    assert_equal "smokey", cat.slug
   end
 
   it "sets slug on validation" do
-    cat = Cat.new(name: 'Prince Chunk')
+    cat = Cat.new(name: "Prince Chunk")
     assert cat.valid?
-    assert_equal 'prince-chunk', cat.slug
+    assert_equal "prince-chunk", cat.slug
   end
 end

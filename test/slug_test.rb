@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 module Sluggi
   class SlugTest < MiniTest::Spec
@@ -9,15 +9,15 @@ module Sluggi
       end
 
       it "is valid" do
-        slug = Slug.new(sluggable_type: 'Cat', sluggable_id: 1, slug: 'garfield')
+        slug = Slug.new(sluggable_type: "Cat", sluggable_id: 1, slug: "garfield")
         assert slug.valid?
       end
     end
 
     describe ".find_type" do
       it "finds" do
-        slug = Slug.create(sluggable_type: 'Cat', sluggable_id: 1, slug: 'garfield')
-        assert_equal slug, Slug.find_type('garfield', 'Cat').first
+        slug = Slug.create(sluggable_type: "Cat", sluggable_id: 1, slug: "garfield")
+        assert_equal slug, Slug.find_type("garfield", "Cat").first
       end
     end
 
@@ -27,7 +27,7 @@ module Sluggi
       end
 
       it "is slug" do
-        assert_equal 'meow', Slug.new(slug: 'meow').to_param
+        assert_equal "meow", Slug.new(slug: "meow").to_param
       end
     end
   end

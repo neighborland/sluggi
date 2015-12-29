@@ -1,5 +1,5 @@
-require 'test_helper'
-require 'rails/generators/test_case'
+require "test_helper"
+require "rails/generators/test_case"
 
 class GeneratorTest < Rails::Generators::TestCase
   tests ::SluggiGenerator

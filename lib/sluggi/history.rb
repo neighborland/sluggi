@@ -4,8 +4,8 @@ module Sluggi
 
     included do
       has_many :slugs,
-        -> { order('slugs.id DESC') },
-        class_name: 'Sluggi::Slug',
+        -> { order("slugs.id DESC") },
+        class_name: "Sluggi::Slug",
         as: :sluggable,
         dependent: :destroy
 
