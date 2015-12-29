@@ -5,8 +5,8 @@ Gem::Specification.new do |spec|
   spec.version       = Sluggi::VERSION
   spec.authors       = ["Tee Parham"]
   spec.email         = ["tee@neighborland.com"]
-  spec.summary       = %q{Rails Slug Generator}
-  spec.description   = %q{A Rails slug generator inspired by friendly_id}
+  spec.summary       = 'Rails Slug Generator'
+  spec.description   = 'A Rails slug generator inspired by friendly_id'
   spec.homepage      = "https://github.com/neighborland/sluggi"
   spec.license       = "MIT"
 

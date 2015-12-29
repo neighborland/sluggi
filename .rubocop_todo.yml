@@ -35,13 +35,6 @@ Style/Documentation:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'sluggi.gemspec'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 Style/RedundantSelf:
   Exclude:
     - 'lib/sluggi/history.rb'
@@ -58,9 +51,3 @@ Style/SpecialGlobalVars:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiterals:
   Enabled: false
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/UnneededPercentQ:
-  Exclude:
-    - 'sluggi.gemspec'
