@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord", ">= 4.0"
   spec.add_dependency "railties", ">= 4.0"
 
-  spec.add_development_dependency "rake", "~> 10.4"
+  spec.add_development_dependency "rake", "~> 11.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"
   spec.add_development_dependency "mocha", "~> 1.0"
 end
