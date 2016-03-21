@@ -3,21 +3,9 @@ module Sluggi
     extend ActiveSupport::Concern
 
     RESERVED_SLUGS = %w(
-      admin
-      assets
-      create
       edit
-      images
-      index
-      javascripts
-      login
-      logout
       new
-      session
-      stylesheets
-      update
-      users
-    )
+    ).freeze
 
     included do
       validates_exclusion_of :slug, in: ->(_) { reserved_slugs }
