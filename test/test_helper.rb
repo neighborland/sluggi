@@ -15,7 +15,7 @@ ActiveRecord::Base.establish_connection(
   database: ":memory:"
 )
 
-unless ActiveRecord::Base.connection.tables.include?("cats")
+unless ActiveRecord::Base.connection.data_sources.include?("cats")
   ActiveRecord::Schema.define do
     create_table :cats do |t|
       t.datetime :created_at
