@@ -1,38 +1,38 @@
 require "test_helper"
 
+class Cat < ActiveRecord::Base
+  include Sluggi::Slugged
+  include Sluggi::History
+
+  def slug_value
+    name
+  end
+
+  def slug_value_changed?
+    name_changed?
+  end
+end
+
+class Dog < ActiveRecord::Base
+  include Sluggi::Slugged
+  include Sluggi::History
+
+  def slug_value
+    name
+  end
+
+  def slug_value_changed?
+    name_changed?
+  end
+end
+
+class BigDog < Dog
+end
+
+class LittleDog < Dog
+end
+
 class HistoryTest < MiniTest::Spec
-  class ::Cat < ActiveRecord::Base
-    include Sluggi::Slugged
-    include Sluggi::History
-
-    def slug_value
-      name
-    end
-
-    def slug_value_changed?
-      name_changed?
-    end
-  end
-
-  class ::Dog < ActiveRecord::Base
-    include Sluggi::Slugged
-    include Sluggi::History
-
-    def slug_value
-      name
-    end
-
-    def slug_value_changed?
-      name_changed?
-    end
-  end
-
-  class ::BigDog < ::Dog
-  end
-
-  class ::LittleDog < ::Dog
-  end
-
   before do
     Cat.delete_all
     Sluggi::Slug.delete_all
