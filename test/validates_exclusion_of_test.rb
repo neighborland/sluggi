@@ -6,7 +6,7 @@ class ValidatesExclusionOfTest < MiniTest::Spec
   end
 
   describe ".reserved_slugs" do
-    %w(edit new).each do |word|
+    %w[edit new].each do |word|
       it "includes #{word}" do
         assert_includes Cat.reserved_slugs, word
       end
