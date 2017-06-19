@@ -9,7 +9,7 @@ module Sluggi
         as: :sluggable,
         dependent: :destroy
 
-      after_save :create_slug, if: :slug_value_changed?
+      after_save :create_slug, if: :saved_change_to_slug_value?
     end
 
     module ClassMethods
@@ -31,6 +31,10 @@ module Sluggi
     end
 
     private
+
+    def saved_change_to_slug_value?
+      raise NotImplementedError, "You must implement #saved_change_to_slug_value?"
+    end
 
     def create_slug
       value = clean_slug(slug_value)
