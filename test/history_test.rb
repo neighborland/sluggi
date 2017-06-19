@@ -11,6 +11,10 @@ class Cat < ActiveRecord::Base
   def slug_value_changed?
     name_changed?
   end
+
+  def saved_change_to_slug_value?
+    saved_change_to_name?
+  end
 end
 
 class Dog < ActiveRecord::Base
@@ -23,6 +27,10 @@ class Dog < ActiveRecord::Base
 
   def slug_value_changed?
     name_changed?
+  end
+
+  def saved_change_to_slug_value?
+    saved_change_to_name?
   end
 end
 

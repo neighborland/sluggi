@@ -77,6 +77,8 @@ Cat.find_by_slug('tuxedo-stan')
 To save slug history, include `Sluggi::History`. You get a `slugs` association. You can search for any
 slug in the history using `.find_slug!`.
 
+You must also implement `#saved_change_to_slug_value?`.
+
 ```ruby
 class Cat < ActiveRecord::Base
   include Sluggi::Slugged
@@ -88,6 +90,10 @@ class Cat < ActiveRecord::Base
 
   def slug_value_changed?
     name_changed?
+  end
+
+  def saved_change_to_slug_value?
+    saved_change_to_name?
   end
 end
 ```
