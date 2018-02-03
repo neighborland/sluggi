@@ -39,7 +39,6 @@ class ModelTest < MiniTest::Spec
 
   describe "#to_param" do
     before do
-      Cat.delete_all
       @cat = Cat.new(name: "Tuxedo Stan")
     end
 
@@ -52,9 +51,10 @@ class ModelTest < MiniTest::Spec
       assert_equal "tuxedo-stan", @cat.to_param
     end
 
-    it "is the old slug when changed but not saved" do
+    it "is the old slug when record is invalid" do
       @cat.save!
       @cat.slug = "ketzel"
+      @cat.errors.add(:name, "something is wrong")
       assert_equal "tuxedo-stan", @cat.to_param
     end
   end

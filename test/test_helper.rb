@@ -8,6 +8,12 @@ require "sqlite3"
 require "sluggi"
 require "mocha/setup"
 
+begin
+  require "byebug"
+rescue LoadError
+  # ok
+end
+
 ActiveRecord::Base.logger = Logger.new(STDERR) if ENV["VERBOSE"]
 
 ActiveRecord::Base.establish_connection(

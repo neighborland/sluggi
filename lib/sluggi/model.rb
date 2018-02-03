@@ -10,7 +10,7 @@ module Sluggi
     end
 
     def to_param
-      slug_was
+      errors.any? ? slug_was : slug
     end
 
     private
