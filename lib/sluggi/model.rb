@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sluggi
   module Model
     extend ActiveSupport::Concern

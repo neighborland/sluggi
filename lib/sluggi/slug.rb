@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sluggi
   class Slug < ActiveRecord::Base
     belongs_to :sluggable, polymorphic: true
