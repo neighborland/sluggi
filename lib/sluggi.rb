@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "sluggi/version"
 require "sluggi/slug"
 require "sluggi/history"

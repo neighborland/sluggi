@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSlugs < ActiveRecord::Migration
   def change
     create_table :slugs do |t|
