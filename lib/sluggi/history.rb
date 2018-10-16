@@ -16,7 +16,7 @@ module Sluggi
 
     module ClassMethods
       def find_slug!(slug)
-        object = where(slug: slug).first || find_slugs(slug).first&.sluggable
+        object = find_by(slug: slug) || find_slugs(slug).first&.sluggable
         unless object.is_a?(self)
           raise ActiveRecord::RecordNotFound, "Couldn't find #{name} with 'slug'='#{slug}'"
         end
