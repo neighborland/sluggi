@@ -5,7 +5,7 @@ require "rails/generators/test_case"
 
 class GeneratorTest < Rails::Generators::TestCase
   tests ::SluggiGenerator
-  destination File.expand_path("../../tmp", __FILE__)
+  destination File.expand_path("../tmp", __dir__)
   setup :prepare_destination
 
   test "generate a migration" do

@@ -25,13 +25,6 @@ Style/Documentation:
     - 'lib/sluggi/validate_presence.rb'
     - 'lib/sluggi/validate_uniqueness.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'lib/sluggi/generators/sluggi_generator.rb'
-    - 'test/generator_test.rb'
-
 # Offense count: 8
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
