@@ -1,10 +1,13 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
   DisplayCopNames: true
 
 inherit_from: .rubocop_todo.yml
 
 Layout/AlignParameters:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
