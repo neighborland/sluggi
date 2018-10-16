@@ -5,7 +5,7 @@ module Sluggi
     extend ActiveSupport::Concern
 
     NOT_IMPLEMENTED_MESSAGE = "You must implement #slug_value_changed? "\
-      "and either #slug_value or #slug_candidates".freeze
+      "and either #slug_value or #slug_candidates"
 
     included do
       before_validation :set_slug

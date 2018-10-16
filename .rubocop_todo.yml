@@ -32,12 +32,6 @@ Style/ExpandPathArguments:
     - 'lib/sluggi/generators/sluggi_generator.rb'
     - 'test/generator_test.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/MutableConstant:
-  Exclude:
-    - 'lib/sluggi/version.rb'
-
 # Offense count: 8
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
