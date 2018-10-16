@@ -28,7 +28,11 @@ class ValidateUniquenessTest < MiniTest::Spec
     cat = Cat.create(slug: "garfield")
     cat.factoid = "factoid"
     refute cat.slug_value_changed?
-    ActiveRecord::Validations::UniquenessValidator.any_instance.expects(:validate_each).never
-    assert cat.valid?
+
+    # UniquenessValidator calls record.persisted?
+    # This stub ensures that the validator is not run.
+    cat.stub(:persisted?, -> { raise StandardError }) do
+      assert cat.valid?
+    end
   end
 end

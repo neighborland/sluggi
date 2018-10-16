@@ -8,7 +8,6 @@ require "active_support"
 require "active_record"
 require "sqlite3"
 require "sluggi"
-require "mocha/setup"
 
 begin
   require "byebug"
