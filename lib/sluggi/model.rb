@@ -18,7 +18,7 @@ module Sluggi
     private
 
     def clean_slug(value)
-      value.try :parameterize
+      value&.parameterize
     end
 
     def set_slug

@@ -16,7 +16,7 @@ module Sluggi
 
     module ClassMethods
       def find_slug!(slug)
-        object = where(slug: slug).first || find_slugs(slug).first.try(:sluggable)
+        object = where(slug: slug).first || find_slugs(slug).first&.sluggable
         unless object.is_a?(self)
           raise ActiveRecord::RecordNotFound, "Couldn't find #{name} with 'slug'='#{slug}'"
         end
@@ -41,7 +41,7 @@ module Sluggi
     def create_slug
       value = clean_slug(slug_value)
       return if value.blank?
-      return if slugs.first.try(:slug) == value
+      return if slugs.first&.slug == value
       self.class.find_slugs(value).delete_all # revert to previous slug & put first
       slugs.create(slug: value)
     end
