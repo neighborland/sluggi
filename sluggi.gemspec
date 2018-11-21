@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activerecord", "~> 5.1"
   spec.add_dependency "railties", "~> 5.1"
 
+  spec.add_development_dependency "appraisal", "~> 2.0"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"
 end
