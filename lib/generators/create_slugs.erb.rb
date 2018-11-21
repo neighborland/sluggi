@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class CreateSlugs < ActiveRecord::Migration
+class CreateSlugs < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
   def change
     create_table :slugs do |t|
       t.string :slug, null: false
