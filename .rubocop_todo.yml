@@ -6,26 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-Lint/HandleExceptions:
-  Exclude:
-    - 'test/test_helper.rb'
-
-# Offense count: 10
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/sluggi/history.rb'
-    - 'lib/sluggi/migrations/create_slugs.rb'
-    - 'lib/sluggi/model.rb'
-    - 'lib/sluggi/slug.rb'
-    - 'lib/sluggi/slugged.rb'
-    - 'lib/sluggi/validate_exclusion_of.rb'
-    - 'lib/sluggi/validate_presence.rb'
-    - 'lib/sluggi/validate_uniqueness.rb'
-
-# Offense count: 8
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:

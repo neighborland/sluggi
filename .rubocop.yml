@@ -1,6 +1,10 @@
 AllCops:
   TargetRubyVersion: 2.3
   DisplayCopNames: true
+  Exclude:
+    - gemfiles/*
+    - Appraisals
+    - lib/generators/create_slugs.erb.rb
 
 inherit_from: .rubocop_todo.yml
 
@@ -13,8 +17,16 @@ Layout/EmptyLineAfterGuardClause:
 Layout/MultilineOperationIndentation:
   Enabled: false
 
+Lint/HandleExceptions:
+  Exclude:
+    - 'test/test_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+
 Style/SignalException:
   EnforcedStyle: only_raise
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
