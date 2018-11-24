@@ -31,7 +31,8 @@ module Sluggi
     # these are generally good to override:
 
     def slug_value
-      slug_candidates.each do |value|
+      slug_candidates.each do |item|
+        value = item.respond_to?(:call) ? item.call : item
         next if value.blank?
         candidate = clean_slug(value)
         return candidate if candidate == slug
