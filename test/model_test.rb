@@ -23,9 +23,10 @@ class ModelTest < MiniTest::Spec
   class CandidateCat < ActiveRecord::Base
     self.table_name = "cats"
     include Sluggi::Model
+    include Sluggi::ValidateUniqueness
 
     def slug_candidates
-      [nil, name]
+      [name, -> { "#{name}-#{CandidateCat.count}" }]
     end
 
     def slug_value_changed?
@@ -65,6 +66,13 @@ class ModelTest < MiniTest::Spec
     cat = CandidateCat.new(name: "Smokey")
     assert cat.valid?
     assert_equal "smokey", cat.slug
+  end
+
+  it "creates using callable candidate" do
+    CandidateCat.create!(name: "Bart")
+    count = CandidateCat.count
+    cat = CandidateCat.create!(name: "Bart")
+    assert_equal "bart-#{count}", cat.slug
   end
 
   it "sets slug on validation" do

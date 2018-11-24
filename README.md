@@ -136,13 +136,14 @@ uniqueness conflicts.
 class Cat < ActiveRecord::Base
   include Sluggi::Slugged
 
-  def name_and_id
-    "#{name}-#{id}"
-  end
-
-  # the first unused value in the list is used
+  # The first unused value in the list is used.
+  # Each item may be a value or a lambda.
+  # Use a lambda to defer expensive unique value calculations.
   def slug_candidates
-    [name, name_and_id]
+    [
+      name,
+      -> { "#{name}-#{Cat.count}" }
+    ]
   end
 
   def slug_value_changed?
@@ -158,10 +159,7 @@ cat.slug
 
 cat_2 = Cat.create(name: 'Tuxedo Stan')
 cat_2.slug
-=> 'tuxedo-stan-2'
-cat_2.id
-=> 2
-
+=> 'tuxedo-stan-456'
 ```
 
 ## Alternatives
