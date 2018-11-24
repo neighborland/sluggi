@@ -39,11 +39,10 @@ module Sluggi
     end
 
     def create_slug
-      value = clean_slug(slug_value)
-      return if value.blank?
-      return if slugs.first&.slug == value
-      self.class.find_slugs(value).delete_all # revert to previous slug & put first
-      slugs.create(slug: value)
+      return if slug.blank?
+      return if slugs.first&.slug == slug
+      self.class.find_slugs(slug).delete_all # revert to previous slug & put first
+      slugs.create(slug: slug)
     end
   end
 end

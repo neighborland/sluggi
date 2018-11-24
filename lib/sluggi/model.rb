@@ -11,6 +11,13 @@ module Sluggi
       before_validation :set_slug
     end
 
+    module ClassMethods
+      # Define this so that History can override it.
+      def slug_exists?(name)
+        exists?(slug: name)
+      end
+    end
+
     def to_param
       errors.any? ? slug_was : slug
     end
@@ -36,7 +43,7 @@ module Sluggi
         next if value.blank?
         candidate = clean_slug(value)
         return candidate if candidate == slug
-        return candidate unless self.class.exists?(slug: candidate)
+        return candidate unless self.class.slug_exists?(candidate)
       end
       nil
     end

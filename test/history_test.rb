@@ -23,16 +23,18 @@ class Dog < ActiveRecord::Base
   include Sluggi::Slugged
   include Sluggi::History
 
-  def slug_value
-    name
-  end
-
   def slug_value_changed?
     name_changed?
   end
 
   def saved_change_to_slug_value?
     saved_change_to_name?
+  end
+
+  private
+
+  def slug_candidates
+    [name, -> { "#{name}-#{Dog.count}" }]
   end
 end
 
@@ -127,6 +129,17 @@ class HistoryTest < MiniTest::Spec
       cat.save!
       assert_equal 1, cat.slugs.size
       assert_equal "tsim-tung-brother-cream", cat.slugs.first.slug
+    end
+
+    it "creates slug history using candidates" do
+      Dog.create!(name: "Lassie")
+      dog = Dog.create!(name: "Lassie")
+      slug1 = dog.slug
+      assert_equal slug1, dog.slugs.first.slug
+      dog.name = "Lassy"
+      dog.save!
+      assert_equal 2, dog.slugs.size
+      assert_equal ["lassy", slug1], dog.slugs.map(&:slug)
     end
   end
 end

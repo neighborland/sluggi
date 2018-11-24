@@ -129,8 +129,10 @@ Cat.find_by_slug('tuxedo-stan')
 
 ### Model with Slug Candidates
 
-Override `#slug_candidates` to define cascading candidate values for slugs. This is useful to avoid
-uniqueness conflicts.
+Override `#slug_candidates` to define cascading candidate values for slugs.
+This is useful to avoid uniqueness conflicts. Do not override `#slug_value` -
+the default implementation in `Model` will call `#slug_candidates` and
+works with or without `History`.
 
 ```ruby
 class Cat < ActiveRecord::Base
