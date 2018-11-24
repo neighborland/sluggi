@@ -3,7 +3,7 @@
 [![Gem Version](http://img.shields.io/gem/v/sluggi.svg)](http://rubygems.org/gems/sluggi)
 [![Build Status](http://img.shields.io/travis/neighborland/sluggi.svg)](https://travis-ci.org/neighborland/sluggi)
 
-Sluggi is a simple [friendly_id](https://github.com/norman/friendly_id)-inspired slugging library for ActiveRecord models.
+Sluggi is a simple [friendly_id](https://github.com/norman/friendly_id)-inspired slugging library for ActiveRecord models. It is faster than `friendly_id` (see below for benchmarks).
 
 It provides basic slugs, slug history, and the ability to define multiple slug candidates.
 
@@ -163,6 +163,39 @@ cat_2 = Cat.create(name: 'Tuxedo Stan')
 cat_2.slug
 => 'tuxedo-stan-456'
 ```
+
+## Performance
+
+Run the benchmark script: `ruby bench.rb`. This script is based on the
+benchmark script from `friendly_id`.
+
+Here are some anecdotal results using ruby 2.5.3:
+
+```
+                                                  SLUGGI      FRIENDLY_ID
+1) find (id) - direct ActiveRecord                0.092318    0.093049
+2) find (in-table slug)                           0.102773    0.259542
+3) find (in-table slug; using finders module)     0.098183    0.108248
+4) find (external slug)                           0.670229    0.832791
+5) insert (plain AR / no slug)                    0.345077    0.345105
+6) insert (in-table-slug)                         0.666451    0.815505
+7) insert (in-table-slug; using finders module)   0.668737    0.744433
+8) insert (external slug)                         2.480790    2.849761
+```
+
+Notes:
+
+Sluggi is at least 10% faster in every benchmark.
+
+1) Baseline (does not use either gem)
+2) 0.44x
+3) 0.90x
+4) 0.80x
+5) Baseline (does not use either gem)
+6) 0.82x
+7) 0.90x
+8) 0.87x
+
 
 ## Alternatives
 
