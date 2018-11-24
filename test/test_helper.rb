@@ -26,7 +26,7 @@ unless ActiveRecord::Base.connection.data_sources.include?("cats")
       t.datetime :created_at
       t.string :factoid
       t.string :name
-      t.string :slug
+      t.string :slug, null: false
     end
 
     create_table :slugs do |t|
@@ -40,7 +40,7 @@ unless ActiveRecord::Base.connection.data_sources.include?("cats")
       t.datetime :created_at
       t.string :type
       t.string :name
-      t.string :slug
+      t.string :slug, null: false
     end
   end
 end
