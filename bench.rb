@@ -5,7 +5,7 @@
 # Edit the FRIENDLY value below
 # ruby bench.rb
 
-FRIENDLY = true
+FRIENDLY = !ENV["FRIENDLY"].nil?
 
 # --------------
 
@@ -21,6 +21,8 @@ else
   require "sluggi"
 end
 
+puts "FRIENDLY: #{FRIENDLY}"
+
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
 Book = Class.new ActiveRecord::Base
@@ -34,8 +36,9 @@ class Journalist < ActiveRecord::Base
     def slug_value_changed?
       name_changed?
     end
+
     def slug_candidates
-      [name, -> { "#{name}-#{rand(999999)}" }]
+      [name, -> { "#{name}-#{rand(999_999)}" }]
     end
   end
 end
@@ -50,11 +53,13 @@ class Manual < ActiveRecord::Base
     def slug_value_changed?
       name_changed?
     end
+
     def saved_change_to_slug_value?
       saved_change_to_name?
     end
+
     def slug_candidates
-      [name, -> { "#{name}-#{rand(999999)}" }]
+      [name, -> { "#{name}-#{rand(999_999)}" }]
     end
   end
 end
@@ -62,14 +67,15 @@ end
 class Restaurant < ActiveRecord::Base
   if FRIENDLY
     extend FriendlyId
-    friendly_id :name, use: [:slugged, :finders]
+    friendly_id :name, use: %i[slugged finders]
   else
     include Sluggi::Model
     def slug_value_changed?
       name_changed?
     end
+
     def slug_candidates
-      [name, -> { "#{name}-#{rand(999999)}" }]
+      [name, -> { "#{name}-#{rand(999_999)}" }]
     end
   end
 end
@@ -84,8 +90,10 @@ ActiveRecord::Schema.define do
       t.datetime :created_at
     end
     add_index :friendly_id_slugs, %i[sluggable_type sluggable_id]
-    add_index :friendly_id_slugs, %i[slug sluggable_type], length: { slug: 140, sluggable_type: 50 }
-    add_index :friendly_id_slugs, %i[slug sluggable_type scope], length: { slug: 70, sluggable_type: 50, scope: 70 }, unique: true
+    add_index :friendly_id_slugs, %i[slug sluggable_type],
+              length: { slug: 140, sluggable_type: 50 }
+    add_index :friendly_id_slugs, %i[slug sluggable_type scope],
+              length: { slug: 70, sluggable_type: 50, scope: 70 }, unique: true
   else
     create_table :slugs do |t|
       t.string :slug, null: false
@@ -107,23 +115,22 @@ ActiveRecord::Schema.define do
   end
 end
 
-BOOKS       = []
-JOURNALISTS = []
-MANUALS     = []
-RESTAURANTS = []
+books       = []
+journalists = []
+manuals     = []
+restaurants = []
 
 100.times do
   name = FFaker::Name.name
+  books << (Book.create! name: name).id
   if FRIENDLY
-    BOOKS       << (Book.create! name: name).id
-    JOURNALISTS << (Journalist.create! name: name).friendly_id
-    MANUALS     << (Manual.create! name: name).friendly_id
-    RESTAURANTS << (Restaurant.create! name: name).friendly_id
+    journalists << (Journalist.create! name: name).friendly_id
+    manuals     << (Manual.create! name: name).friendly_id
+    restaurants << (Restaurant.create! name: name).friendly_id
   else
-    BOOKS       << (Book.create! name: name).id
-    JOURNALISTS << (Journalist.create! name: name).slug
-    MANUALS     << (Manual.create! name: name).slug
-    RESTAURANTS << (Restaurant.create! name: name).slug
+    journalists << (Journalist.create! name: name).slug
+    manuals     << (Manual.create! name: name).slug
+    restaurants << (Restaurant.create! name: name).slug
   end
 end
 
@@ -133,30 +140,30 @@ N = 1000
 
 Benchmark.bmbm do |x|
   x.report "find (id) - direct ActiveRecord" do
-    N.times { Book.find BOOKS.sample }
+    N.times { Book.find books.sample }
   end
 
   x.report "find (in-table slug)" do
     if FRIENDLY
-      N.times { Journalist.friendly.find JOURNALISTS.sample }
+      N.times { Journalist.friendly.find journalists.sample }
     else
-      N.times { Journalist.find_by slug: JOURNALISTS.sample }
+      N.times { Journalist.find_by slug: journalists.sample }
     end
   end
 
   x.report "find (in-table slug; using finders module)" do
     if FRIENDLY
-      N.times { Restaurant.find RESTAURANTS.sample }
+      N.times { Restaurant.find restaurants.sample }
     else
-      N.times { Restaurant.find_by slug: RESTAURANTS.sample }
+      N.times { Restaurant.find_by slug: restaurants.sample }
     end
   end
 
   x.report "find (external slug)" do
     if FRIENDLY
-      N.times { Manual.friendly.find MANUALS.sample }
+      N.times { Manual.friendly.find manuals.sample }
     else
-      N.times { Manual.find_slug! MANUALS.sample }
+      N.times { Manual.find_slug! manuals.sample }
     end
   end
 

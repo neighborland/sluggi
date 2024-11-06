@@ -22,6 +22,10 @@ Lint/SuppressedException:
   Exclude:
     - "test/test_helper.rb"
 
+Metrics/BlockLength:
+  Exclude:
+    - "bench.rb"
+
 Style/Documentation:
   Enabled: false
 
