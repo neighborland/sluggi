@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ValidatePresenceTest < MiniTest::Spec
+class ValidatePresenceTest < Minitest::Spec
   class Cat < ActiveRecord::Base
     include Sluggi::ValidatePresence
   end

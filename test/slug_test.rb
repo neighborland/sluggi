@@ -3,7 +3,7 @@
 require "test_helper"
 
 module Sluggi
-  class SlugTest < MiniTest::Spec
+  class SlugTest < Minitest::Spec
     describe "validation" do
       it "is not valid" do
         slug = Slug.new

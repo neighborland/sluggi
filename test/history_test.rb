@@ -44,7 +44,7 @@ end
 class LittleDog < Dog
 end
 
-class HistoryTest < MiniTest::Spec
+class HistoryTest < Minitest::Spec
   before do
     Cat.delete_all
     Sluggi::Slug.delete_all

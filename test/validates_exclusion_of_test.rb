@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ValidatesExclusionOfTest < MiniTest::Spec
+class ValidatesExclusionOfTest < Minitest::Spec
   class Cat < ActiveRecord::Base
     include Sluggi::ValidateExclusionOf
   end

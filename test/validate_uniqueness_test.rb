@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ValidateUniquenessTest < MiniTest::Spec
+class ValidateUniquenessTest < Minitest::Spec
   class Cat < ActiveRecord::Base
     include Sluggi::Model
     include Sluggi::ValidateUniqueness

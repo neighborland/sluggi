@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class ModelTest < MiniTest::Spec
+class ModelTest < Minitest::Spec
   class IncompleteCat < ActiveRecord::Base
     self.table_name = "cats"
     include Sluggi::Model

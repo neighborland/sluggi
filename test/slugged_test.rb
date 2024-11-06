@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class SluggedTest < MiniTest::Spec
+class SluggedTest < Minitest::Spec
   class Cat < ActiveRecord::Base
     include Sluggi::Slugged
 
