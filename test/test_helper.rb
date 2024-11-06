@@ -13,7 +13,7 @@ rescue LoadError
   # ok
 end
 
-ActiveRecord::Base.logger = Logger.new(STDERR) if ENV["VERBOSE"]
+ActiveRecord::Base.logger = Logger.new($stderr) if ENV["VERBOSE"]
 
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",

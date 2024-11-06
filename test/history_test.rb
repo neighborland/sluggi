@@ -120,7 +120,7 @@ class HistoryTest < Minitest::Spec
       cat.name = "Cream Aberdeen"
       cat.save!
       assert_equal 2, cat.slugs.size
-      assert_equal ["cream-aberdeen", "tsim-tung-brother-cream"], cat.slugs.map(&:slug)
+      assert_equal %w[cream-aberdeen tsim-tung-brother-cream], cat.slugs.map(&:slug)
     end
 
     it "does not create a slug when model slug is unchanged" do

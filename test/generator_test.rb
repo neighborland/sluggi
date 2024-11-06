@@ -10,11 +10,9 @@ class GeneratorTest < Rails::Generators::TestCase
   setup :prepare_destination
 
   test "generate a migration" do
-    begin
-      run_generator
-      assert_migration "db/migrate/create_slugs"
-    ensure
-      FileUtils.rm_rf destination_root
-    end
+    run_generator
+    assert_migration "db/migrate/create_slugs"
+  ensure
+    FileUtils.rm_rf destination_root
   end
 end

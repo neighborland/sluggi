@@ -6,10 +6,10 @@ module Sluggi
 
     included do
       has_many :slugs,
-        -> { order("slugs.id DESC") },
-        class_name: "Sluggi::Slug",
-        as: :sluggable,
-        dependent: :destroy
+               -> { order("slugs.id DESC") },
+               class_name: "Sluggi::Slug",
+               as: :sluggable,
+               dependent: :destroy
 
       after_save :create_slug, if: :saved_change_to_slug_value?
     end
