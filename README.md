@@ -1,7 +1,7 @@
 # Sluggi
 
-[![Gem Version](http://img.shields.io/gem/v/sluggi.svg)](http://rubygems.org/gems/sluggi)
-[![Build Status](http://img.shields.io/travis/neighborland/sluggi.svg)](https://travis-ci.org/neighborland/sluggi)
+[![Gem Version](https://img.shields.io/gem/v/sluggi.svg)](https://rubygems.org/gems/sluggi)
+[![Build Status](https://github.com/neighborland/sluggi/actions/workflows/ruby.yml/badge.svg)](https://github.com/neighborland/sluggi/actions/workflows/ruby.yml)
 
 Sluggi is a simple [friendly_id](https://github.com/norman/friendly_id)-inspired slugging library for ActiveRecord models. It is faster than `friendly_id` (see below for benchmarks).
 
