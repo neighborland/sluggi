@@ -7,9 +7,16 @@ Sluggi is a simple [friendly_id](https://github.com/norman/friendly_id)-inspired
 
 It provides basic slugs, slug history, and the ability to define multiple slug candidates.
 
-Sluggi 1.x works with Rails 5.1+.
-Sluggi 0.5.x works with Rails 4.0-5.0.x. Make sure to view the 0.5-stable branch's Readme for
-those versions.
+## Versions
+
+The gemspec includes the `activerecord` version dependency, so the correct version of `sluggi` will be installed to match your `activerecord` version.
+
+| sluggi | activerecord |
+| --: | --: |
+| 0.5 | 4.0-5.0 |
+| 1.0 | 5.1-5.2 |
+| 2.0 | 6.x |
+| 3.0 | 7.x |
 
 ## Install
 
