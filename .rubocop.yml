@@ -1,6 +1,7 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 3.0
   DisplayCopNames: true
+  NewCops: enable
   Exclude:
     - gemfiles/*
     - Appraisals
@@ -8,7 +9,7 @@ AllCops:
 
 inherit_from: .rubocop_todo.yml
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/EmptyLineAfterGuardClause:
@@ -17,9 +18,9 @@ Layout/EmptyLineAfterGuardClause:
 Layout/MultilineOperationIndentation:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Exclude:
-    - 'test/test_helper.rb'
+    - "test/test_helper.rb"
 
 Style/Documentation:
   Enabled: false
@@ -29,4 +30,3 @@ Style/SignalException:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
-
