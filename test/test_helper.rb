@@ -8,7 +8,7 @@ require "sqlite3"
 require "sluggi"
 
 begin
-  require "byebug"
+  require "debug"
 rescue LoadError
   # ok
 end
