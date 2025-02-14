@@ -17,6 +17,7 @@ The gemspec includes the `activerecord` version dependency, so the correct versi
 | 1.0 | 5.1-5.2 |
 | 2.0 | 6.x |
 | 3.0 | 7.x |
+| 4.0 | 8.x |
 
 ## Install
 
